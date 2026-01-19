@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=mysql://imageuser:imagepass@db:3306/imagedb
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key}
+      - FLASK_ENV=production
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: mariadb:11
+    environment:
+      - MYSQL_USER=imageuser
+      - MYSQL_PASSWORD=imagepass
+      - MYSQL_DATABASE=imagedb
+      - MYSQL_ROOT_PASSWORD=rootpass
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  mariadb_data:
