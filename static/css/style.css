@@ -169,6 +169,16 @@ main {
     background-color: #c82333;
 }
 
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+}
+
 .btn-small {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
@@ -244,6 +254,18 @@ main {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
+}
+
+.image-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.image-actions .btn {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
 }
 
 .empty-gallery {

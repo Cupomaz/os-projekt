@@ -55,10 +55,19 @@
                             <span class="file-size">{{ (image.file_size / 1024) | round(2) }} KB</span>
                             <span class="upload-date">{{ image.upload_date.strftime('%d.%m.%Y %H:%M') }}</span>
                         </div>
-                        <form method="POST" action="{{ url_for('delete_image', image_id=image.id) }}" 
-                              onsubmit="return confirm('Are you sure you want to delete this image?');">
-                            <button type="submit" class="btn btn-danger btn-small">Delete</button>
-                        </form>
+                        <div class="image-actions">
+                            <a href="{{ url_for('uploaded_file', filename=image.filename) }}" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="btn btn-secondary btn-small">
+                                Open in New Tab
+                            </a>
+                            <form method="POST" action="{{ url_for('delete_image', image_id=image.id) }}" 
+                                  onsubmit="return confirm('Are you sure you want to delete this image?');"
+                                  style="display: inline;">
+                                <button type="submit" class="btn btn-danger btn-small">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
