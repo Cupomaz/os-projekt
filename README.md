@@ -1,6 +1,6 @@
 # Image Upload Gallery
 
-Flask web aplikace pro nahrávání a správu obrázků s PostgreSQL databází.
+Flask web aplikace pro nahrávání a správu obrázků s MariaDB databází.
 
 ## Funkce
 
@@ -66,7 +66,7 @@ Toto spustí jak Flask aplikaci, tak MariaDB databázi.
 ```bash
 docker build -t image-upload-app .
 docker run -p 5000:5000 \
-  -e DATABASE_URL=mysql://user:pass@host:3306/db \
+  -e DATABASE_URL=mariadb+mysqldb://user:pass@host:3306/db \
   -e SECRET_KEY=your-secret-key \
   image-upload-app
 ```
@@ -102,7 +102,7 @@ Vytvořte `.env` soubor podle `.env.example`:
 
 ```env
 SECRET_KEY=your-secret-key-here
-DATABASE_URL=mysql://username:password@localhost:3306/imagedb
+DATABASE_URL=mariadb+mysqldb://username:password@localhost:3306/imagedb
 UPLOAD_FOLDER=uploads
 MAX_FILE_SIZE=16777216
 ```
